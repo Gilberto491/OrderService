@@ -2,6 +2,9 @@
 FROM openjdk:17-slim AS build
 WORKDIR /build
 
+# Instalar Maven
+RUN apt-get update && apt-get install -y maven
+
 # Copiar o código-fonte para o contêiner
 COPY . .
 
@@ -9,7 +12,7 @@ COPY . .
 RUN mvn clean package -DskipTests
 
 # Etapa de execução
-FROM openjdk:17-jdk-slim
+FROM openjdk:17-slim
 WORKDIR /app
 
 # Copiar o arquivo JAR da etapa de construção
