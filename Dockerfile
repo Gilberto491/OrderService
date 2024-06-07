@@ -1,5 +1,5 @@
 # Etapa de construção
-FROM maven:3.8.5-openjdk-17 AS build
+FROM openjdk:17-slim AS build
 WORKDIR /build
 
 # Copiar o código-fonte para o contêiner
